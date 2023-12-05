@@ -23,7 +23,7 @@ window.addEventListener('load', () => {
     init();
     interval = setInterval(() => {
         drawMyShape()
-    }, 100)
+    }, 50)
 })
 window.addEventListener('beforeunload', () => {
     let myColor = getSessionStorageItem(storageNames.myColor)
@@ -91,6 +91,11 @@ function drawMyShape() {
             ctx.moveTo(myObj.centerX, myObj.centerY);
             ctx.lineTo(...getOtherCenter(myObj, otherObj));
             ctx.stroke()
+
+            ctx.beginPath();
+            ctx.strokeStyle = otherObj.color
+            ctx.arc(...getOtherCenter(myObj, otherObj), 150, 0, 2 * Math.PI);
+            ctx.stroke();
         }
 
     }
