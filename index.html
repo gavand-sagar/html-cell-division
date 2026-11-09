@@ -4,36 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cell Division 3D</title>
     <style>
-        div{
-            box-sizing: border-box;
-        }        
-        #root{
-            display: flex;
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(#000000,#001100,#221133) ;
+        html, body { margin: 0; height: 100%; overflow: hidden; background: #000; }
+        #root {
+            position: fixed; inset: 0;
+            background: radial-gradient(ellipse at center, #0b1a14 0%, #05060d 55%, #000 100%);
         }
-        canvas{
-            height: 100%;
-            width: 100%;
+        canvas { display: block; width: 100%; height: 100%; }
+        #hud {
+            position: fixed; left: 16px; bottom: 14px;
+            font: 12px/1.5 ui-monospace, Menlo, Consolas, monospace;
+            color: rgba(200, 255, 230, .55); letter-spacing: .08em;
+            pointer-events: none; user-select: none;
         }
+        #hud b { color: var(--cell, #9fffd0); font-weight: 600; }
     </style>
+    <script type="importmap">
+        { "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        } }
+    </script>
 </head>
 
 <body>
-    <div id="root">
-        <canvas id="canvas"></canvas>
-    </div>
-    <script src="./script.js">
-        
-    </script>
+    <div id="root"></div>
+    <div id="hud">CELL <b id="cellName">—</b> · <span id="peers">0</span> linked · open more windows &amp; drag them around</div>
+    <script type="module" src="./script.js"></script>
 </body>
 
 </html>
